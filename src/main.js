@@ -9,7 +9,7 @@ import UsersList from './components/users/UsersList.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/teams', component: TeamsList }, // our-domain.com/teams => TeamsList
+        { path: '/teams', component: TeamsList }, // our-domain.com/teams => TeamsList!
         { path: '/users', component: UsersList }
     ]
 });
@@ -19,3 +19,5 @@ const app = createApp(App)
 app.use(router);
 
 app.mount('#app');
+
+
