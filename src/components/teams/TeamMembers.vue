@@ -20,37 +20,37 @@ export default {
   inject: ['users', 'teams'],
   props: ['teamId'],
   components: {
-    UserItem
+    UserItem,
   },
   data() {
     return {
      teamName: '',
-     members: []
+     members: [],
     };
   },
   methods: {
-    loadTeamMembers(teamId){
-      const selectedTeam = this.teams.find(team => team.id === teamId);
+    loadTeamMembers(teamId) {
+      const selectedTeam = this.teams.find((team) => team.id === teamId);
       const members = selectedTeam.members;
       const selectedMembers = [];
-      for (const memeber of members){
-        const selectedUser = this.users.find(user => user.id === memeber);
+      for (const member of members) {
+        const selectedUser = this.users.find((user) => user.id === member);
         selectedMembers.push(selectedUser);
       }
       this.members = selectedMembers;
       this.teamName = selectedTeam.name;
     },
   },
-  created(){
-    //this.$route.path // /teams/t1
+  created() {
+    // this.$route.path // /teams/t1
     this.loadTeamMembers(this.teamId);
-   
+    console.log(this.$route.query);
   },
   watch: {
-    $route(newRoute){
-      this.loadTeamMembers(newRoute);
-    }
-  }
+    teamId(newId) {
+      this.loadTeamMembers(newId);
+    },
+  },
 };
 </script>
 
